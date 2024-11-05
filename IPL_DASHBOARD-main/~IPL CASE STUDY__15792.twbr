@@ -1,0 +1,3128 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1010.1014                               -->
+<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelTableType />
+    <ParameterDefaultValues />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+    <WorksheetBackgroundTransparency />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='Teams' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' source-field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[batting_team]' type='nominal' value='&quot;Royal Challengers Bangalore&quot;'>
+        <calculation class='tableau' formula='&quot;Royal Challengers Bangalore&quot;' />
+      </column>
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[Parameter 1]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Royal Challengers Bangalore&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+    </datasource>
+    <datasource caption='matches+' inline='true' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='matches' name='textscan.0hj581q0k9cexf13mczlt0vbp7iy'>
+            <connection class='textscan' directory='Data/IPL Dataset' filename='matches.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[matches.csv].[id]' />
+              <expression op='[deliveries.csv].[match_id]' />
+            </expression>
+          </clause>
+          <relation connection='textscan.0hj581q0k9cexf13mczlt0vbp7iy' name='matches.csv' table='[matches#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+              <column datatype='integer' name='id' ordinal='0' />
+              <column datatype='integer' name='season' ordinal='1' />
+              <column datatype='string' name='city' ordinal='2' />
+              <column datatype='date' name='date' ordinal='3' />
+              <column datatype='string' name='team1' ordinal='4' />
+              <column datatype='string' name='team2' ordinal='5' />
+              <column datatype='string' name='toss_winner' ordinal='6' />
+              <column datatype='string' name='toss_decision' ordinal='7' />
+              <column datatype='string' name='result' ordinal='8' />
+              <column datatype='integer' name='dl_applied' ordinal='9' />
+              <column datatype='string' name='winner' ordinal='10' />
+              <column datatype='integer' name='win_by_runs' ordinal='11' />
+              <column datatype='integer' name='win_by_wickets' ordinal='12' />
+              <column datatype='string' name='player_of_match' ordinal='13' />
+              <column datatype='string' name='venue' ordinal='14' />
+              <column datatype='string' name='umpire1' ordinal='15' />
+              <column datatype='string' name='umpire2' ordinal='16' />
+              <column datatype='string' name='umpire3' ordinal='17' />
+              <column datatype='string' name='home_team' ordinal='18' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0hj581q0k9cexf13mczlt0vbp7iy' name='deliveries.csv' table='[deliveries#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+              <column datatype='integer' name='match_id' ordinal='0' />
+              <column datatype='integer' name='inning' ordinal='1' />
+              <column datatype='string' name='batting_team' ordinal='2' />
+              <column datatype='string' name='bowling_team' ordinal='3' />
+              <column datatype='integer' name='over' ordinal='4' />
+              <column datatype='integer' name='ball' ordinal='5' />
+              <column datatype='string' name='batsman' ordinal='6' />
+              <column datatype='string' name='non_striker' ordinal='7' />
+              <column datatype='string' name='bowler' ordinal='8' />
+              <column datatype='integer' name='is_super_over' ordinal='9' />
+              <column datatype='integer' name='wide_runs' ordinal='10' />
+              <column datatype='integer' name='bye_runs' ordinal='11' />
+              <column datatype='integer' name='legbye_runs' ordinal='12' />
+              <column datatype='integer' name='noball_runs' ordinal='13' />
+              <column datatype='integer' name='penalty_runs' ordinal='14' />
+              <column datatype='integer' name='batsman_runs' ordinal='15' />
+              <column datatype='integer' name='extra_runs' ordinal='16' />
+              <column datatype='integer' name='total_runs' ordinal='17' />
+              <column datatype='string' name='player_dismissed' ordinal='18' />
+              <column datatype='string' name='dismissal_kind' ordinal='19' />
+              <column datatype='string' name='fielder' ordinal='20' />
+            </columns>
+          </relation>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;₹&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_IN&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;₹&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_IN&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>season</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[season]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>season</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>city</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[city]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>city</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[date]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>team1</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[team1]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>team1</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>team2</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[team2]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>team2</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>toss_winner</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[toss_winner]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>toss_winner</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>toss_decision</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[toss_decision]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>toss_decision</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>result</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[result]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>result</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dl_applied</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[dl_applied]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>dl_applied</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>winner</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[winner]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>winner</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>win_by_runs</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[win_by_runs]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>win_by_runs</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>win_by_wickets</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[win_by_wickets]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>win_by_wickets</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>player_of_match</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[player_of_match]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>player_of_match</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>venue</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[venue]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>venue</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>umpire1</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[umpire1]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>umpire1</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>umpire2</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[umpire2]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>umpire2</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>umpire3</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[umpire3]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>umpire3</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <approx-count>1</approx-count>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>home_team</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[home_team]</local-name>
+            <parent-name>[matches.csv]</parent-name>
+            <remote-alias>home_team</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>match_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[match_id]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>match_id</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>inning</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[inning]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>inning</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>batting_team</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[batting_team]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>batting_team</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>bowling_team</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[bowling_team]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>bowling_team</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>over</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[over]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>over</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ball</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ball]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>ball</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>batsman</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[batsman]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>batsman</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>non_striker</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[non_striker]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>non_striker</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>bowler</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[bowler]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>bowler</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_super_over</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[is_super_over]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>is_super_over</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>wide_runs</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[wide_runs]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>wide_runs</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>bye_runs</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[bye_runs]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>bye_runs</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>legbye_runs</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[legbye_runs]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>legbye_runs</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>noball_runs</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[noball_runs]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>noball_runs</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>penalty_runs</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[penalty_runs]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>penalty_runs</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>batsman_runs</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[batsman_runs]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>batsman_runs</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>extra_runs</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[extra_runs]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>extra_runs</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_runs</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_runs]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>total_runs</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>player_dismissed</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[player_dismissed]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>player_dismissed</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dismissal_kind</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[dismissal_kind]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>dismissal_kind</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fielder</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[fielder]</local-name>
+            <parent-name>[deliveries.csv]</parent-name>
+            <remote-alias>fielder</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Win Flag' datatype='integer' name='[Calculation_808396143570698241]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Parameters].[Parameter 1] = [winner] THEN 1 ELSE&#13;&#10;IF [Parameters].[Parameter 1] = [team1] OR [Parameters].[Parameter 1] = [team2] THEN -1 END&#13;&#10;END' />
+      </column>
+      <column caption='Outcome' datatype='string' name='[Calculation_808396143573000194]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [Calculation_808396143570698241]=1 THEN &quot;Won&quot; ELSE &quot;Lost&quot; END' />
+      </column>
+      <column caption='Toss_vs_Outcome' datatype='string' name='[Calculation_808396143573688323]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [toss_winner]=[winner] THEN &quot;Toss Winner Won&quot;&#13;&#10;ELSE &quot;Toss Winner Lost&quot;&#13;&#10;END' />
+      </column>
+      <column caption='Match_innings' datatype='string' name='[Calculation_808396143622586372]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='STR([match_id])+&quot;_&quot;+STR([inning])' />
+      </column>
+      <column caption='Fours' datatype='integer' name='[Calculation_808396143650787334]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNT( IF [batsman_runs] = 4 THEN 1 END)' />
+      </column>
+      <column caption='Sixes' datatype='integer' name='[Calculation_808396143654125575]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNT( IF [batsman_runs] = 6 THEN 1 END)' />
+      </column>
+      <column caption='Man of the Match' datatype='string' name='[Calculation_808396143698219020]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [Calculation_808396143570698241] = 1 THEN [player_of_match] END' />
+      </column>
+      <column caption='Win %' datatype='real' name='[Calculation_808396143698698253]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNT(IF [Calculation_808396143570698241] = 1 THEN [id] END)&#13;&#10;/&#13;&#10;COUNT( IF [Calculation_808396143570698241] = 1 OR [Calculation_808396143570698241] = -1 THEN [id] END)' />
+      </column>
+      <column caption='Home vs Away' datatype='string' name='[Calculation_808396143702441999]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF  [home_team]=&quot;team1&quot; and [Parameters].[Parameter 1]=[team1] THEN &quot;Home&quot;&#13;&#10;else if [home_team]=&quot;team1&quot; and [Parameters].[Parameter 1]=[team2] THEN &quot;Away&quot;&#13;&#10;else if [home_team]=&quot;NA&quot; THEN &quot;NA&quot;&#13;&#10;else if [home_team]=&quot;team2&quot; and [Parameters].[Parameter 1]=[team1] THEN &quot;Away&quot;&#13;&#10;else if [home_team]=&quot;team2&quot; and [Parameters].[Parameter 1]=[team2] THEN &quot;Home&quot;&#13;&#10;END END END END END' />
+      </column>
+      <column caption='All Seasons Stats' datatype='string' name='[Calculation_808396143734910992]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='STR([season])' />
+      </column>
+      <column caption='matches.csv' datatype='table' name='[__tableau_internal_object_id__].[matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376]' role='measure' type='quantitative' />
+      <column caption='Ball' datatype='integer' name='[ball]' role='measure' type='quantitative' />
+      <column caption='Batsman' datatype='string' name='[batsman]' role='dimension' type='nominal' />
+      <column caption='Batsman Runs' datatype='integer' name='[batsman_runs]' role='measure' type='quantitative' />
+      <column caption='Batting Team' datatype='string' name='[batting_team]' role='dimension' type='nominal' />
+      <column caption='Bowler' datatype='string' name='[bowler]' role='dimension' type='nominal' />
+      <column caption='Bowling Team' datatype='string' name='[bowling_team]' role='dimension' type='nominal' />
+      <column caption='Bye Runs' datatype='integer' name='[bye_runs]' role='measure' type='quantitative' />
+      <column caption='City' datatype='string' name='[city]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+      <column caption='Dismissal Kind' datatype='string' name='[dismissal_kind]' role='dimension' type='nominal' />
+      <column caption='Dl Applied' datatype='integer' name='[dl_applied]' role='measure' type='quantitative' />
+      <column caption='Extra Runs' datatype='integer' name='[extra_runs]' role='measure' type='quantitative' />
+      <column caption='Fielder' datatype='string' name='[fielder]' role='dimension' type='nominal' />
+      <column caption='Home Team' datatype='string' name='[home_team]' role='dimension' type='nominal' />
+      <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+      <column caption='Inning' datatype='integer' name='[inning]' role='measure' type='quantitative' />
+      <column caption='Is Super Over' datatype='integer' name='[is_super_over]' role='measure' type='quantitative' />
+      <column caption='Legbye Runs' datatype='integer' name='[legbye_runs]' role='measure' type='quantitative' />
+      <column caption='Match Id' datatype='integer' name='[match_id]' role='dimension' type='ordinal' />
+      <column caption='Noball Runs' datatype='integer' name='[noball_runs]' role='measure' type='quantitative' />
+      <column caption='Non Striker' datatype='string' name='[non_striker]' role='dimension' type='nominal' />
+      <column caption='Over' datatype='integer' name='[over]' role='measure' type='quantitative' />
+      <column caption='Penalty Runs' datatype='integer' name='[penalty_runs]' role='measure' type='quantitative' />
+      <column caption='Player Dismissed' datatype='string' name='[player_dismissed]' role='dimension' type='nominal' />
+      <column caption='Player Of Match' datatype='string' name='[player_of_match]' role='dimension' type='nominal' />
+      <column caption='Result' datatype='string' name='[result]' role='dimension' type='nominal' />
+      <column aggregation='Sum' caption='season Dimenssion' datatype='integer' name='[season (copy)_808396143625412613]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='[season]' />
+      </column>
+      <column caption='Team1' datatype='string' name='[team1]' role='dimension' type='nominal' />
+      <column caption='Team2' datatype='string' name='[team2]' role='dimension' type='nominal' />
+      <column caption='Toss Decision' datatype='string' name='[toss_decision]' role='dimension' type='nominal' />
+      <column caption='Toss Winner' datatype='string' name='[toss_winner]' role='dimension' type='nominal' />
+      <column caption='Total Runs' datatype='integer' name='[total_runs]' role='measure' type='quantitative' />
+      <column caption='Umpire1' datatype='string' name='[umpire1]' role='dimension' type='nominal' />
+      <column caption='Umpire2' datatype='string' name='[umpire2]' role='dimension' type='nominal' />
+      <column caption='Umpire3' datatype='string' name='[umpire3]' role='dimension' type='nominal' />
+      <column caption='Venue' datatype='string' name='[venue]' role='dimension' type='nominal' />
+      <column caption='Wide Runs' datatype='integer' name='[wide_runs]' role='measure' type='quantitative' />
+      <column caption='Win By Runs' datatype='integer' name='[win_by_runs]' role='measure' type='quantitative' />
+      <column caption='Win By Wickets' datatype='integer' name='[win_by_wickets]' role='measure' type='quantitative' />
+      <column caption='Winner' datatype='string' name='[winner]' role='dimension' type='nominal' />
+      <column-instance column='[Calculation_808396143698219020]' derivation='None' name='[none:Calculation_808396143698219020:nk]' pivot='key' type='nominal' />
+      <column-instance column='[batsman]' derivation='None' name='[none:batsman:nk]' pivot='key' type='nominal' />
+      <column-instance column='[winner]' derivation='None' name='[none:winner:nk]' pivot='key' type='nominal' />
+      <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:winner:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;Mumbai Indians&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Gujarat Lions&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Royal Challengers Bangalore&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Pune Warriors&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Kings XI Punjab&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Chennai Super Kings&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Kochi Tuskers Kerala&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Sunrisers Hyderabad&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Rajasthan Royals&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Kolkata Knight Riders&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Deccan Chargers&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Rising Pune Supergiants&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Delhi Daredevils&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:batsman:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;AB de Villiers&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;RV Uthappa&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;CH Gayle&quot;</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>&quot;V Kohli&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;G Gambhir&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;SK Raina&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;S Dhawan&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;DA Warner&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;MS Dhoni&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;RG Sharma&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[yr:date:ok]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>2011</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>2012</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>2010</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>2016</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>2014</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>2017</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>2009</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>2013</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>2008</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>2015</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Calculation_808396143698219020:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;KP Pietersen&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;SR Watson&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;HV Patel&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Yuvraj Singh&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;MK Pandey&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;LRPL Taylor&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;JD Unadkat&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;RV Uthappa&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;A Kumble&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;V Kohli&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;R Dravid&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;JH Kallis&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;MV Boucher&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;P Kumar&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;R Vinay Kumar&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;S Aravind&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;MA Starc&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;KM Jadhav&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;AB de Villiers&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;VR Aaron&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;PA Patel&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Mandeep Singh&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;CH Gayle&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;YS Chahal&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Teams' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' source-field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[batting_team]' type='nominal' value='&quot;Royal Challengers Bangalore&quot;'>
+          <calculation class='tableau' formula='&quot;Royal Challengers Bangalore&quot;' />
+        </column>
+      </datasource-dependencies>
+      <object-graph>
+        <objects>
+          <object caption='matches.csv' id='matches.csv_E28326698DBC4EDBB3C5ADBF61BA1376'>
+            <properties context=''>
+              <relation join='inner' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[matches.csv].[id]' />
+                    <expression op='[deliveries.csv].[match_id]' />
+                  </expression>
+                </clause>
+                <relation connection='textscan.0hj581q0k9cexf13mczlt0vbp7iy' name='matches.csv' table='[matches#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+                    <column datatype='integer' name='id' ordinal='0' />
+                    <column datatype='integer' name='season' ordinal='1' />
+                    <column datatype='string' name='city' ordinal='2' />
+                    <column datatype='date' name='date' ordinal='3' />
+                    <column datatype='string' name='team1' ordinal='4' />
+                    <column datatype='string' name='team2' ordinal='5' />
+                    <column datatype='string' name='toss_winner' ordinal='6' />
+                    <column datatype='string' name='toss_decision' ordinal='7' />
+                    <column datatype='string' name='result' ordinal='8' />
+                    <column datatype='integer' name='dl_applied' ordinal='9' />
+                    <column datatype='string' name='winner' ordinal='10' />
+                    <column datatype='integer' name='win_by_runs' ordinal='11' />
+                    <column datatype='integer' name='win_by_wickets' ordinal='12' />
+                    <column datatype='string' name='player_of_match' ordinal='13' />
+                    <column datatype='string' name='venue' ordinal='14' />
+                    <column datatype='string' name='umpire1' ordinal='15' />
+                    <column datatype='string' name='umpire2' ordinal='16' />
+                    <column datatype='string' name='umpire3' ordinal='17' />
+                    <column datatype='string' name='home_team' ordinal='18' />
+                  </columns>
+                </relation>
+                <relation connection='textscan.0hj581q0k9cexf13mczlt0vbp7iy' name='deliveries.csv' table='[deliveries#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='en_IN' separator=','>
+                    <column datatype='integer' name='match_id' ordinal='0' />
+                    <column datatype='integer' name='inning' ordinal='1' />
+                    <column datatype='string' name='batting_team' ordinal='2' />
+                    <column datatype='string' name='bowling_team' ordinal='3' />
+                    <column datatype='integer' name='over' ordinal='4' />
+                    <column datatype='integer' name='ball' ordinal='5' />
+                    <column datatype='string' name='batsman' ordinal='6' />
+                    <column datatype='string' name='non_striker' ordinal='7' />
+                    <column datatype='string' name='bowler' ordinal='8' />
+                    <column datatype='integer' name='is_super_over' ordinal='9' />
+                    <column datatype='integer' name='wide_runs' ordinal='10' />
+                    <column datatype='integer' name='bye_runs' ordinal='11' />
+                    <column datatype='integer' name='legbye_runs' ordinal='12' />
+                    <column datatype='integer' name='noball_runs' ordinal='13' />
+                    <column datatype='integer' name='penalty_runs' ordinal='14' />
+                    <column datatype='integer' name='batsman_runs' ordinal='15' />
+                    <column datatype='integer' name='extra_runs' ordinal='16' />
+                    <column datatype='integer' name='total_runs' ordinal='17' />
+                    <column datatype='string' name='player_dismissed' ordinal='18' />
+                    <column datatype='string' name='dismissal_kind' ordinal='19' />
+                    <column datatype='string' name='fielder' ordinal='20' />
+                  </columns>
+                </relation>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Biggest Wins By Runs(TOP 10)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Biggest wins by Runs(Top10)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matches+' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1q5c7mc0jsu63w19s8ltn10ehxhv'>
+            <column-instance column='[date]' derivation='Attribute' name='[attr:date:ok]' pivot='key' type='ordinal' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+            <column-instance column='[id]' derivation='None' name='[none:id:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[winner]' derivation='None' name='[none:winner:nk]' pivot='key' type='nominal' />
+            <column-instance column='[win_by_runs]' derivation='Sum' name='[sum:win_by_runs:qk]' pivot='key' type='quantitative' />
+            <column caption='Win By Runs' datatype='integer' name='[win_by_runs]' role='measure' type='quantitative' />
+            <column caption='Winner' datatype='string' name='[winner]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:id:ok]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='SUM([win_by_runs])' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:id:ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:id:ok]' direction='ASC' measure-to-sort-by='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:id:ok]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:id:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:winner:nk]' value='59' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:winner:nk]' />
+              <tooltip column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[attr:date:ok]' />
+            </encodings>
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:id:ok] / [federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:winner:nk])</rows>
+        <cols>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:win_by_runs:qk]</cols>
+      </table>
+      <simple-id uuid='{10929CF9-45E3-4BED-8B43-9E5347C64F70}' />
+    </worksheet>
+    <worksheet name='Highest Totals'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matches+' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1q5c7mc0jsu63w19s8ltn10ehxhv'>
+            <column caption='Match_innings' datatype='string' name='[Calculation_808396143622586372]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='STR([match_id])+&quot;_&quot;+STR([inning])' />
+            </column>
+            <column-instance column='[date]' derivation='Attribute' name='[attr:date:ok]' pivot='key' type='ordinal' />
+            <column caption='Batting Team' datatype='string' name='[batting_team]' role='dimension' type='nominal' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Inning' datatype='integer' name='[inning]' role='measure' type='quantitative' />
+            <column caption='Match Id' datatype='integer' name='[match_id]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_808396143622586372]' derivation='None' name='[none:Calculation_808396143622586372:nk]' pivot='key' type='nominal' />
+            <column-instance column='[batting_team]' derivation='None' name='[none:batting_team:nk]' pivot='key' type='nominal' />
+            <column-instance column='[match_id]' derivation='None' name='[none:match_id:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[season (copy)_808396143625412613]' derivation='None' name='[none:season (copy)_808396143625412613:ok]' pivot='key' type='ordinal' />
+            <column aggregation='Sum' caption='season Dimenssion' datatype='integer' name='[season (copy)_808396143625412613]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='[season]' />
+            </column>
+            <column datatype='integer' name='[season]' role='measure' type='quantitative' />
+            <column-instance column='[total_runs]' derivation='Sum' name='[sum:total_runs:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Runs' datatype='integer' name='[total_runs]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143622586372:nk]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='SUM([total_runs])' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:Calculation_808396143622586372:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:season (copy)_808396143625412613:ok]'>
+            <groupfilter function='level-members' level='[none:season (copy)_808396143625412613:ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:match_id:ok]' direction='ASC' measure-to-sort-by='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:match_id:ok]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143622586372:nk]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:season (copy)_808396143625412613:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]' value='57' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <tooltip column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[attr:date:ok]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#59a14f' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:match_id:ok] / [federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk])</rows>
+        <cols>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:total_runs:qk]</cols>
+      </table>
+      <simple-id uuid='{7D3357EF-2E40-4388-9D92-A9AC1E7D76AA}' />
+    </worksheet>
+    <worksheet name='Most Fours'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matches+' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1q5c7mc0jsu63w19s8ltn10ehxhv'>
+            <column caption='Fours' datatype='integer' name='[Calculation_808396143650787334]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNT( IF [batsman_runs] = 4 THEN 1 END)' />
+            </column>
+            <column caption='Batsman' datatype='string' name='[batsman]' role='dimension' type='nominal' />
+            <column caption='Batsman Runs' datatype='integer' name='[batsman_runs]' role='measure' type='quantitative' />
+            <column caption='Batting Team' datatype='string' name='[batting_team]' role='dimension' type='nominal' />
+            <column caption='Bowling Team' datatype='string' name='[bowling_team]' role='dimension' type='nominal' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column-instance column='[batsman]' derivation='None' name='[none:batsman:nk]' pivot='key' type='nominal' />
+            <column-instance column='[batting_team]' derivation='None' name='[none:batting_team:nk]' pivot='key' type='nominal' />
+            <column-instance column='[bowling_team]' derivation='None' name='[none:bowling_team:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_808396143650787334]' derivation='User' name='[usr:Calculation_808396143650787334:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]'>
+            <groupfilter count='5' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='[Calculation_808396143650787334]' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:batsman:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='[Calculation_808396143650787334]' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:batting_team:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:bowling_team:nk]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='[Calculation_808396143650787334]' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:bowling_team:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[yr:date:ok]'>
+            <groupfilter from='2008' function='range' level='[yr:date:ok]' to='2017' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:bowling_team:nk]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[yr:date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <size column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[usr:Calculation_808396143650787334:qk]' />
+              <text column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' />
+              <color column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{3349218E-E654-482E-A30F-18762FDC9EAB}' />
+    </worksheet>
+    <worksheet name='Most Sixes'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matches+' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1q5c7mc0jsu63w19s8ltn10ehxhv'>
+            <column caption='Sixes' datatype='integer' name='[Calculation_808396143654125575]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNT( IF [batsman_runs] = 6 THEN 1 END)' />
+            </column>
+            <column caption='Batsman' datatype='string' name='[batsman]' role='dimension' type='nominal' />
+            <column caption='Batsman Runs' datatype='integer' name='[batsman_runs]' role='measure' type='quantitative' />
+            <column caption='Batting Team' datatype='string' name='[batting_team]' role='dimension' type='nominal' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column-instance column='[batsman]' derivation='None' name='[none:batsman:nk]' pivot='key' type='nominal' />
+            <column-instance column='[batting_team]' derivation='None' name='[none:batting_team:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_808396143654125575]' derivation='User' name='[usr:Calculation_808396143654125575:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]'>
+            <groupfilter count='5' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='[Calculation_808396143654125575]' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:batsman:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='[Calculation_808396143654125575]' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:batting_team:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[yr:date:ok]'>
+            <groupfilter from='2008' function='range' level='[yr:date:ok]' to='2017' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[yr:date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <size column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[usr:Calculation_808396143654125575:qk]' />
+              <text column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' />
+              <color column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{C0EBB2BD-07CD-4582-9BAD-D15D6B450EFE}' />
+    </worksheet>
+    <worksheet name='Orange Cap Contenders'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matches+' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1q5c7mc0jsu63w19s8ltn10ehxhv'>
+            <column caption='Batsman' datatype='string' name='[batsman]' role='dimension' type='nominal' />
+            <column caption='Batsman Runs' datatype='integer' name='[batsman_runs]' role='measure' type='quantitative' />
+            <column caption='Batting Team' datatype='string' name='[batting_team]' role='dimension' type='nominal' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column-instance column='[batsman]' derivation='None' name='[none:batsman:nk]' pivot='key' type='nominal' />
+            <column-instance column='[batting_team]' derivation='None' name='[none:batting_team:nk]' pivot='key' type='nominal' />
+            <column-instance column='[batsman_runs]' derivation='Sum' name='[sum:batsman_runs:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='SUM([batsman_runs])' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:batsman:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <computed-sort column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' direction='ASC' using='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:batsman_runs:qk]' />
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]'>
+            <groupfilter function='level-members' level='[none:batting_team:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[yr:date:ok]'>
+            <groupfilter function='level-members' level='[yr:date:ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[yr:date:ok]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='744' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:batsman_runs:qk]' num-steps='8' type='custom-interpolated'>
+              <color-palette custom='true' name='' type='ordered-sequential'>
+                <color>#f1f1f1</color>
+                <color>#f2eada</color>
+                <color>#f3e3c3</color>
+                <color>#f5dcab</color>
+                <color>#f6d593</color>
+                <color>#f8ce7c</color>
+                <color>#f9c763</color>
+                <color>#fac04b</color>
+                <color>#fcb832</color>
+                <color>#fdb119</color>
+                <color>#ffaa00</color>
+              </color-palette>
+            </encoding>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='on' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <size column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:batsman_runs:qk]' />
+              <color column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:batsman_runs:qk]' />
+              <text column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{11A2EAF0-46F4-4DE1-9705-EAFFCAACC7BB}' />
+    </worksheet>
+    <worksheet name='Purple Cap Contenders'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matches+' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1q5c7mc0jsu63w19s8ltn10ehxhv'>
+            <column caption='Bowler' datatype='string' name='[bowler]' role='dimension' type='nominal' />
+            <column-instance column='[player_dismissed]' derivation='Count' name='[cnt:player_dismissed:qk]' pivot='key' type='quantitative' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Dismissal Kind' datatype='string' name='[dismissal_kind]' role='dimension' type='nominal' />
+            <column-instance column='[bowler]' derivation='None' name='[none:bowler:nk]' pivot='key' type='nominal' />
+            <column-instance column='[dismissal_kind]' derivation='None' name='[none:dismissal_kind:nk]' pivot='key' type='nominal' />
+            <column caption='Player Dismissed' datatype='string' name='[player_dismissed]' role='dimension' type='nominal' />
+            <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:bowler:nk]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='COUNT([player_dismissed])' function='order' user:ui-marker='order'>
+                <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Ashish Reddy&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Chandila&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Choudhary&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Flintoff&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Kumble&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Mishra&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Mithun&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Nehra&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Nel&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Symonds&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Uniyal&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;A Zampa&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AA Chavan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AA Jhunjhunwala&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AA Kazi&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AA Noffke&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AB Agarkar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AB Dinda&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AB McDonald&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Abdur Razzak&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AC Gilchrist&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AC Thomas&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AC Voges&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AD Mascarenhas&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AD Mathews&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AD Russell&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AF Milne&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AG Murtaza&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AJ Finch&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AJ Tye&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AL Menaria&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AM Nayar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AM Rahane&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AM Salvi&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AN Ahmed&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Anand Rajan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Ankit Sharma&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Ankit Soni&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Anureet Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AP Dole&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AR Patel&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AS Rajpoot&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AS Raut&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;AUK Pathan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Avesh Khan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Azhar Mahmood&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;B Akhil&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;B Chipli&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;B Geeves&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;B Kumar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;B Laughlin&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;B Lee&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;B Stanlake&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;BA Bhatt&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;BA Stokes&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Basil Thampi&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;BAW Mendis&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;BB Sran&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;BCJ Cutting&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;BE Hendricks&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Bipul Sharma&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;BJ Hodge&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;BJ Rohrer&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;BMAJ Mendis&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;BW Hilfenhaus&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;C de Grandhomme&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;C Ganapathy&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;C Munro&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;C Nanda&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;CH Gayle&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;CH Morris&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;CJ Anderson&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;CJ Jordan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;CJ McKay&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;CK Kapugedera&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;CK Langeveldt&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;CL White&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;CR Brathwaite&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;CR Woakes&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;CRD Fernando&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;D du Preez&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;D Kalyankrishna&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;D Salunkhe&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;D Wiese&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DAJ Bracewell&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DB Ravi Teja&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DE Bollinger&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DJ Bravo&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DJ Harris&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DJ Hooda&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DJ Hussey&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DJ Muthuswami&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DJ Thornely&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DJG Sammy&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DL Chahar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DL Vettori&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DNT Zoysa&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DP Nannes&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DP Vijaykumar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DR Smith&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DS Kulkarni&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DT Christian&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;DW Steyn&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;F du Plessis&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;FH Edwards&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;FY Fazal&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Gagandeep Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;GB Hogg&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;GD McGrath&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;GH Vihari&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;GJ Maxwell&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;GR Napier&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;GS Sandhu&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Gurkeerat Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Harbhajan Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Harmeet Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Harmeet Singh (2)&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;HH Pandya&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;HV Patel&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;I Malhotra&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;I Sharma&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;IC Pandey&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;IK Pathan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Imran Tahir&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Iqbal Abdulla&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;J Botha&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;J Suchith&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;J Syed Mohammad&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;J Theron&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;J Yadav&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JA Morkel&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Jaskaran Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JD Ryder&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JD Unadkat&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JDP Oram&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JDS Neesham&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JE Taylor&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JEC Franklin&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JH Kallis&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JJ Bumrah&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JJ van der Wath&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JM Kemp&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JO Holder&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Joginder Sharma&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JP Duminy&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JP Faulkner&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JR Hopes&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;JW Hastings&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;K Goel&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;K Rabada&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;K Santokie&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;K Upadhyay&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;KA Pollard&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;KAJ Roach&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Kamran Khan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Karanveer Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;KC Cariappa&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;KH Pandya&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;KJ Abbott&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;KK Cooper&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;KMDN Kulasekara&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;KP Appanna&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;KP Pietersen&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;KS Williamson&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Kuldeep Yadav&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;KV Sharma&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;KW Richardson&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;L Ablish&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;L Balaji&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;LA Carseldine&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;LH Ferguson&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;LJ Wright&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;LMP Simmons&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;LPC Silva&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;LR Shukla&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;LRPL Taylor&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;M Ashwin&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;M de Lange&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;M Kartik&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;M Manhas&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;M Morkel&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;M Muralitharan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;M Ntini&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;M Vijay&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MA Khote&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MA Starc&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Mashrafe Mortaza&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MB Parmar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MC Henriques&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MF Maharoof&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MG Johnson&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MG Neser&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MJ Clarke&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MJ Henry&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MJ McClenaghan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MK Tiwary&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MM Patel&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MM Sharma&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MN Samuels&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Mohammad Asif&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Mohammad Hafeez&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Mohammad Nabi&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Mohammed Shami&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Mohammed Siraj&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MP Stoinis&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MR Marsh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;MS Gony&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Mustafizur Rahman&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;N Rana&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;NB Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;ND Doshi&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;NJ Rimmington&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;NL McCullum&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;NLTC Perera&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;NM Coulter-Nile&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;P Amarnath&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;P Awana&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;P Kumar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;P Negi&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;P Parameswaran&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;P Prasanth&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;P Sahu&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;P Suyal&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Pankaj Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Parvez Rasool&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;PC Valthaty&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;PD Collingwood&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;PJ Cummins&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;PJ Sangwan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;PM Sarvesh Kumar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;PP Chawla&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;PP Ojha&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;PV Tambe&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;R Bhatia&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;R Dhawan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;R McLaren&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;R Ninan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;R Rampaul&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;R Sathish&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;R Sharma&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;R Shukla&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;R Tewatia&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;R Vinay Kumar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RA Jadeja&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RA Shaikh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RA Tripathi&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Rashid Khan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RD Chahar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RE van der Merwe&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RG More&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RG Sharma&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RJ Harris&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RJ Peterson&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RN ten Doeschate&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RP Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RR Bhatkal&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RR Bose&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RR Powar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RR Raje&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RS Bopara&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RS Gavaskar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RV Gomez&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;RW Price&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Aravind&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Badree&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Dhawan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Gopal&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Kaul&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Kaushik&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Ladda&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Nadeem&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Narwal&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Rana&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Randiv&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Sreesanth&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Sriram&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Tyagi&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;S Vidyut&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SA Abbott&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SA Yadav&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Sachin Baby&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Sandeep Sharma&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SB Bangar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SB Jakati&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SB Joshi&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SB Styris&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SB Wagh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SC Ganguly&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SD Chitnis&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SE Bond&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Shahid Afridi&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Shakib Al Hasan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Shivam Sharma&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Shoaib Ahmed&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Shoaib Akhtar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Shoaib Malik&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SJ Srivastava&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SK Raina&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SK Trivedi&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SK Warne&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SL Malinga&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SM Boland&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SM Harwood&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SM Pollock&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SMSM Senanayake&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SN Thakur&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Sohail Tanvir&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SP Narine&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SPD Smith&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SR Tendulkar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SR Watson&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SS Agarwal&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SS Mundhe&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SS Sarkar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;ST Jayasuriya&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;STR Binny&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Sunny Gupta&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;SW Tait&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Swapnil Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;T Henderson&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;T Natarajan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;T Shamsi&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;T Thushara&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;TA Boult&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Tejas Baroka&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;TG Southee&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;TL Suman&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;TM Dilshan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;TM Head&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;TP Sudhindra&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;TS Mills&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Umar Gul&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;UT Yadav&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;V Kohli&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;V Pratap Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;V Sehwag&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;V Shankar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;VR Aaron&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;VRV Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;VS Malik&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;VS Yeligati&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;VY Mahesh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;WA Mota&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Washington Sundar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;WD Parnell&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;WPUJC Vaas&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Y Gnaneswara Rao&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Y Nagar&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Y Venugopal Rao&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;YA Abdulla&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;YK Pathan&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;YS Chahal&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Yuvraj Singh&quot;' />
+                  <groupfilter function='member' level='[none:bowler:nk]' member='&quot;Z Khan&quot;' />
+                </groupfilter>
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <computed-sort column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:bowler:nk]' direction='DESC' using='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[cnt:player_dismissed:qk]' />
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:dismissal_kind:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:dismissal_kind:nk]' member='&quot;stumped&quot;' />
+              <groupfilter function='member' level='[none:dismissal_kind:nk]' member='&quot;bowled&quot;' />
+              <groupfilter function='member' level='[none:dismissal_kind:nk]' member='&quot;caught&quot;' />
+              <groupfilter function='member' level='[none:dismissal_kind:nk]' member='&quot;caught and bowled&quot;' />
+              <groupfilter function='member' level='[none:dismissal_kind:nk]' member='&quot;hit wicket&quot;' />
+              <groupfilter function='member' level='[none:dismissal_kind:nk]' member='&quot;lbw&quot;' />
+              <groupfilter function='member' level='[none:dismissal_kind:nk]' member='&quot;obstructing the field&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[yr:date:ok]'>
+            <groupfilter from='2008' function='range' level='[yr:date:ok]' to='2017' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[yr:date:ok]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:bowler:nk]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:dismissal_kind:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='747' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[cnt:player_dismissed:qk]' type='custom-interpolated'>
+              <color-palette custom='true' name='' type='ordered-sequential'>
+                <color>#f1f1f1</color>
+                <color>#decee5</color>
+                <color>#cbaeda</color>
+                <color>#ba90ce</color>
+                <color>#a975c3</color>
+                <color>#995cb8</color>
+                <color>#8a45ac</color>
+                <color>#7b30a1</color>
+                <color>#6e1d95</color>
+                <color>#610d8a</color>
+                <color>#55007f</color>
+              </color-palette>
+            </encoding>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='on' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <size column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[cnt:player_dismissed:qk]' />
+              <color column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[cnt:player_dismissed:qk]' />
+              <text column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:bowler:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{187C3F7B-910B-43AB-AA60-783EB7C87E6D}' />
+    </worksheet>
+    <worksheet name='Season wise Team Performance'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matches+' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Teams' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' source-field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[batting_team]' type='nominal' value='&quot;Royal Challengers Bangalore&quot;'>
+              <calculation class='tableau' formula='&quot;Royal Challengers Bangalore&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1q5c7mc0jsu63w19s8ltn10ehxhv'>
+            <column caption='Win Flag' datatype='integer' name='[Calculation_808396143570698241]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Parameters].[Parameter 1] = [winner] THEN 1 ELSE&#13;&#10;IF [Parameters].[Parameter 1] = [team1] OR [Parameters].[Parameter 1] = [team2] THEN -1 END&#13;&#10;END' />
+            </column>
+            <column caption='All Seasons Stats' datatype='string' name='[Calculation_808396143734910992]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='STR([season])' />
+            </column>
+            <column caption='Batting Team' datatype='string' name='[batting_team]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_808396143570698241]' derivation='None' name='[none:Calculation_808396143570698241:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_808396143734910992]' derivation='None' name='[none:Calculation_808396143734910992:nk]' pivot='key' type='nominal' />
+            <column-instance column='[winner]' derivation='None' name='[none:winner:nk]' pivot='key' type='nominal' />
+            <column datatype='integer' name='[season]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_808396143570698241]' derivation='Sum' name='[sum:Calculation_808396143570698241:qk]' pivot='key' type='quantitative' />
+            <column caption='Team1' datatype='string' name='[team1]' role='dimension' type='nominal' />
+            <column caption='Team2' datatype='string' name='[team2]' role='dimension' type='nominal' />
+            <column caption='Winner' datatype='string' name='[winner]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143570698241:qk]' included-values='in-range'>
+            <min>-1</min>
+            <max>1</max>
+          </filter>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143734910992:nk]'>
+            <groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='SUM([Calculation_808396143570698241])' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:Calculation_808396143734910992:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:winner:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Chennai Super Kings&quot;' />
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Deccan Chargers&quot;' />
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Delhi Daredevils&quot;' />
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Gujarat Lions&quot;' />
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Kings XI Punjab&quot;' />
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Kochi Tuskers Kerala&quot;' />
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Kolkata Knight Riders&quot;' />
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Mumbai Indians&quot;' />
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Pune Warriors&quot;' />
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Rajasthan Royals&quot;' />
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Rising Pune Supergiants&quot;' />
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Royal Challengers Bangalore&quot;' />
+              <groupfilter function='member' level='[none:winner:nk]' member='&quot;Sunrisers Hyderabad&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143734910992:nk]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143570698241:qk]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:winner:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:Calculation_808396143570698241:qk]' value='' />
+          </style-rule>
+          <style-rule element='field-labels'>
+            <format attr='font-size' value='12' />
+            <format attr='background-color' value='#ffffff' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:Calculation_808396143570698241:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:winner:nk]' />
+              <text column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:Calculation_808396143570698241:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:Calculation_808396143570698241:qk]</rows>
+        <cols>([federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143734910992:nk] / [Parameters].[Parameter 1])</cols>
+      </table>
+      <simple-id uuid='{8AD99620-275B-407C-93CD-52C72EAAA152}' />
+    </worksheet>
+    <worksheet name='Toss Selection vs Outcome by Ground'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Toss Selection vs Outcome by Ground</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matches+' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1q5c7mc0jsu63w19s8ltn10ehxhv'>
+            <column caption='Toss_vs_Outcome' datatype='string' name='[Calculation_808396143573688323]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [toss_winner]=[winner] THEN &quot;Toss Winner Won&quot;&#13;&#10;ELSE &quot;Toss Winner Lost&quot;&#13;&#10;END' />
+            </column>
+            <column caption='Ball' datatype='integer' name='[ball]' role='measure' type='quantitative' />
+            <column-instance column='[id]' derivation='CountD' name='[ctd:id:qk]' pivot='key' type='quantitative' />
+            <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_808396143573688323]' derivation='None' name='[none:Calculation_808396143573688323:nk]' pivot='key' type='nominal' />
+            <column-instance column='[toss_decision]' derivation='None' name='[none:toss_decision:nk]' pivot='key' type='nominal' />
+            <column-instance column='[venue]' derivation='None' name='[none:venue:nk]' pivot='key' type='nominal' />
+            <column-instance column='[ball]' derivation='Sum' name='[sum:ball:qk]' pivot='key' type='quantitative' />
+            <column caption='Toss Decision' datatype='string' name='[toss_decision]' role='dimension' type='nominal' />
+            <column caption='Toss Winner' datatype='string' name='[toss_winner]' role='dimension' type='nominal' />
+            <column caption='Venue' datatype='string' name='[venue]' role='dimension' type='nominal' />
+            <column caption='Winner' datatype='string' name='[winner]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <computed-sort column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143573688323:nk]' direction='DESC' using='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:ball:qk]' />
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:venue:nk]'>
+            <groupfilter function='level-members' level='[none:venue:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:toss_decision:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[ctd:id:qk]' shelf='columns' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:venue:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:toss_decision:nk]' value='81' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Shape' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:toss_decision:nk]' />
+              <shape column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:toss_decision:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#f28e2b' />
+                <format attr='size' value='1' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[ctd:id:qk]</rows>
+        <cols>([federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143573688323:nk] / [federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:toss_decision:nk])</cols>
+      </table>
+      <simple-id uuid='{897FE516-BC90-43DA-949F-F71E97A519CC}' />
+    </worksheet>
+    <worksheet name='Win % Home vs Away'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matches+' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Teams' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' source-field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[batting_team]' type='nominal' value='&quot;Royal Challengers Bangalore&quot;'>
+              <calculation class='tableau' formula='&quot;Royal Challengers Bangalore&quot;' />
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.1q5c7mc0jsu63w19s8ltn10ehxhv'>
+            <column caption='Win Flag' datatype='integer' name='[Calculation_808396143570698241]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [Parameters].[Parameter 1] = [winner] THEN 1 ELSE&#13;&#10;IF [Parameters].[Parameter 1] = [team1] OR [Parameters].[Parameter 1] = [team2] THEN -1 END&#13;&#10;END' />
+            </column>
+            <column caption='Win %' datatype='real' name='[Calculation_808396143698698253]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNT(IF [Calculation_808396143570698241] = 1 THEN [id] END)&#13;&#10;/&#13;&#10;COUNT( IF [Calculation_808396143570698241] = 1 OR [Calculation_808396143570698241] = -1 THEN [id] END)' />
+            </column>
+            <column caption='Home vs Away' datatype='string' name='[Calculation_808396143702441999]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF  [home_team]=&quot;team1&quot; and [Parameters].[Parameter 1]=[team1] THEN &quot;Home&quot;&#13;&#10;else if [home_team]=&quot;team1&quot; and [Parameters].[Parameter 1]=[team2] THEN &quot;Away&quot;&#13;&#10;else if [home_team]=&quot;NA&quot; THEN &quot;NA&quot;&#13;&#10;else if [home_team]=&quot;team2&quot; and [Parameters].[Parameter 1]=[team1] THEN &quot;Away&quot;&#13;&#10;else if [home_team]=&quot;team2&quot; and [Parameters].[Parameter 1]=[team2] THEN &quot;Home&quot;&#13;&#10;END END END END END' />
+            </column>
+            <column caption='Batting Team' datatype='string' name='[batting_team]' role='dimension' type='nominal' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Home Team' datatype='string' name='[home_team]' role='dimension' type='nominal' />
+            <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_808396143702441999]' derivation='None' name='[none:Calculation_808396143702441999:nk]' pivot='key' type='nominal' />
+            <column caption='Team1' datatype='string' name='[team1]' role='dimension' type='nominal' />
+            <column caption='Team2' datatype='string' name='[team2]' role='dimension' type='nominal' />
+            <column-instance column='[date]' derivation='Year-Trunc' name='[tyr:date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_808396143698698253]' derivation='User' name='[usr:Calculation_808396143698698253:qk]' pivot='key' type='quantitative' />
+            <column caption='Winner' datatype='string' name='[winner]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143702441999:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:Calculation_808396143702441999:nk]' member='&quot;Away&quot;' />
+              <groupfilter function='member' level='[none:Calculation_808396143702441999:nk]' member='&quot;Home&quot;' />
+              <groupfilter function='member' level='[none:Calculation_808396143702441999:nk]' member='&quot;NA&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[tyr:date:ok]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[tyr:date:ok]' member='#2008-01-01 00:00:00#' />
+              <groupfilter function='member' level='[tyr:date:ok]' member='#2010-01-01 00:00:00#' />
+              <groupfilter function='member' level='[tyr:date:ok]' member='#2011-01-01 00:00:00#' />
+              <groupfilter function='member' level='[tyr:date:ok]' member='#2012-01-01 00:00:00#' />
+              <groupfilter function='member' level='[tyr:date:ok]' member='#2013-01-01 00:00:00#' />
+              <groupfilter function='member' level='[tyr:date:ok]' member='#2014-01-01 00:00:00#' />
+              <groupfilter function='member' level='[tyr:date:ok]' member='#2015-01-01 00:00:00#' />
+              <groupfilter function='member' level='[tyr:date:ok]' member='#2016-01-01 00:00:00#' />
+              <groupfilter function='member' level='[tyr:date:ok]' member='#2017-01-01 00:00:00#' />
+            </groupfilter>
+          </filter>
+          <natural-sort column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[tyr:date:ok]' direction='ASC' />
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143702441999:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[usr:Calculation_808396143698698253:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143702441999:nk]</column>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[tyr:date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='color' value='#000000' />
+            <format attr='text-format' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[usr:Calculation_808396143698698253:qk]' value='p0.00%' />
+            <format attr='height' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143702441999:nk]' value='70' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='height' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[tyr:date:ok]' value='22' />
+          </style-rule>
+          <style-rule element='field-labels'>
+            <format attr='font-size' value='12' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='font-size' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[usr:Calculation_808396143698698253:qk]' value='15' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[usr:Calculation_808396143698698253:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='12' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <encodings>
+              <color column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[usr:Calculation_808396143698698253:qk]' />
+              <text column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[usr:Calculation_808396143698698253:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='has-stroke' value='false' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minheight' value='-1' />
+                <format attr='maxheight' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143702441999:nk]</rows>
+        <cols>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[tyr:date:ok]</cols>
+      </table>
+      <simple-id uuid='{FBA55ACF-BDFE-4AA1-A534-70C240E3488F}' />
+    </worksheet>
+    <worksheet name='Wins By Wickets Distribution'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='matches+' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1q5c7mc0jsu63w19s8ltn10ehxhv'>
+            <column-instance column='[id]' derivation='Count' name='[cnt:id:qk]' pivot='key' type='quantitative' />
+            <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+            <column-instance column='[win_by_wickets]' derivation='None' name='[none:win_by_wickets:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[win_by_wickets]' derivation='None' name='[none:win_by_wickets:qk]' pivot='key' type='quantitative' />
+            <column caption='Win By Wickets' datatype='integer' name='[win_by_wickets]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:win_by_wickets:qk]' included-values='in-range'>
+            <min>1</min>
+            <max>10</max>
+          </filter>
+          <slices>
+            <column>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:win_by_wickets:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:win_by_wickets:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='in-tooltip' field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:win_by_wickets:qk]' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#b6992d' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[cnt:id:qk]</rows>
+        <cols>[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:win_by_wickets:ok]</cols>
+      </table>
+      <simple-id uuid='{0DC87E91-7242-4DD0-9FEB-284D7E7118EB}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Match Statistics'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true'>Æ                                                       </run>
+            <run bold='true' fontname=' '>Æ           </run>
+            <run bold='true' underline='true'>Match Statistics</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style>
+        <style-rule element='dash-title'>
+          <format attr='background-color' value='#b4b4b4' />
+        </style-rule>
+      </style>
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='12' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98014' id='15' param='vert' type-v2='layout-flow' w='99002' x='499' y='993'>
+            <zone fixed-size='44' h='6452' id='14' is-fixed='true' type-v2='title' w='99002' x='499' y='993'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='91562' id='13' type-v2='layout-basic' w='99002' x='499' y='7445' />
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='42625' id='3' name='Toss Selection vs Outcome by Ground' w='38338' x='2789' y='8479' />
+        <zone h='42393' id='6' name='Biggest Wins By Runs(TOP 10)' w='55193' x='43739' y='9292' />
+        <zone h='39954' id='8' name='Wins By Wickets Distribution' w='37982' x='3205' y='56678' />
+        <zone h='42973' id='9' name='Highest Totals' w='55074' x='43442' y='53310' />
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <layout-options>
+            <title>
+              <formatted-text>
+                <run bold='true'>Æ                                                       </run>
+                <run bold='true' fontname=' '>Æ           </run>
+                <run bold='true' underline='true'>Match Statistics</run>
+              </formatted-text>
+            </title>
+          </layout-options>
+          <size maxheight='1250' minheight='1250' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='23' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98142' id='22' param='vert' type-v2='layout-flow' w='99050' x='475' y='929'>
+                <zone fixed-size='44' h='6039' id='14' type-v2='title' w='99050' x='475' y='929'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='42625' id='3' is-fixed='true' name='Toss Selection vs Outcome by Ground' w='38338' x='2789' y='8479'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='42393' id='6' is-fixed='true' name='Biggest Wins By Runs(TOP 10)' w='55193' x='43739' y='9292'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='42973' id='9' is-fixed='true' name='Highest Totals' w='55074' x='43442' y='53310'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='39954' id='8' is-fixed='true' name='Wins By Wickets Distribution' w='37982' x='3205' y='56678'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{B0E6ADF5-29A2-441B-8C42-19E135A562F9}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='Player Statistics'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Æ                                                                             </run>
+            <run bold='true' underline='true'>Player   Statistics</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style>
+        <style-rule element='dash-title'>
+          <format attr='background-color' value='#b4b4b4' />
+        </style-rule>
+      </style>
+      <size sizing-mode='automatic' />
+      <datasources>
+        <datasource caption='matches+' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1q5c7mc0jsu63w19s8ltn10ehxhv'>
+        <column caption='Batsman' datatype='string' name='[batsman]' role='dimension' type='nominal' />
+        <column caption='Batting Team' datatype='string' name='[batting_team]' role='dimension' type='nominal' />
+        <column caption='Bowler' datatype='string' name='[bowler]' role='dimension' type='nominal' />
+        <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+        <column-instance column='[batsman]' derivation='None' name='[none:batsman:nk]' pivot='key' type='nominal' />
+        <column-instance column='[batting_team]' derivation='None' name='[none:batting_team:nk]' pivot='key' type='nominal' />
+        <column-instance column='[bowler]' derivation='None' name='[none:bowler:nk]' pivot='key' type='nominal' />
+        <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98014' id='20' param='vert' type-v2='layout-flow' w='99002' x='499' y='993'>
+            <zone h='7196' id='21' type-v2='title' w='99002' x='499' y='993'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='90818' id='7' param='horz' type-v2='layout-flow' w='99002' x='499' y='8189'>
+              <zone h='90818' id='5' type-v2='layout-basic' w='91832' x='499' y='8189'>
+                <zone h='45407' id='3' name='Orange Cap Contenders' w='45915' x='499' y='8189'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='45352' id='12' name='Purple Cap Contenders' w='45917' x='46414' y='8189'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='45411' id='15' name='Most Fours' w='45915' x='499' y='53596'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='45466' id='17' name='Most Sixes' w='45917' x='46414' y='53541'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone fixed-size='115' h='90818' id='6' is-fixed='true' param='vert' type-v2='layout-flow' w='7170' x='92331' y='8189'>
+                <zone h='11786' id='8' name='Orange Cap Contenders' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[yr:date:ok]' type-v2='filter' w='7170' x='92331' y='8189'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='11786' id='9' name='Orange Cap Contenders' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' type-v2='filter' w='7170' x='92331' y='19975'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='11786' id='10' name='Orange Cap Contenders' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]' type-v2='filter' w='7170' x='92331' y='31761'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='10050' id='11' name='Orange Cap Contenders' pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:batsman_runs:qk]' type-v2='color' w='7170' x='92331' y='43547'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='11786' id='13' name='Purple Cap Contenders' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:bowler:nk]' type-v2='filter' w='7170' x='92331' y='53597'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='10050' id='14' name='Purple Cap Contenders' pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[cnt:player_dismissed:qk]' type-v2='color' w='7170' x='92331' y='65383'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='11786' id='16' name='Most Fours' pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' type-v2='color' w='7170' x='92331' y='75433'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='11788' id='18' name='Most Sixes' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]' type-v2='filter' w='7170' x='92331' y='87219'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <layout-options>
+            <title>
+              <formatted-text>
+                <run>Æ                                                                             </run>
+                <run bold='true' underline='true'>Player   Statistics</run>
+              </formatted-text>
+            </title>
+          </layout-options>
+          <size maxheight='1750' minheight='1750' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='29' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98142' id='28' param='vert' type-v2='layout-flow' w='99050' x='475' y='929'>
+                <zone h='5807' id='21' type-v2='title' w='99050' x='475' y='929'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='12563' id='8' mode='checkdropdown' name='Orange Cap Contenders' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[yr:date:ok]' type-v2='filter' w='6825' x='92700' y='6736'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='12563' id='9' mode='checkdropdown' name='Orange Cap Contenders' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' type-v2='filter' w='6825' x='92700' y='19299'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='12563' id='10' mode='checkdropdown' name='Orange Cap Contenders' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]' type-v2='filter' w='6825' x='92700' y='31862'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='46166' id='3' is-fixed='true' name='Orange Cap Contenders' w='46112' x='475' y='6736'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8478' id='11' name='Orange Cap Contenders' pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:batsman_runs:qk]' type-v2='color' w='6825' x='92700' y='44425'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='12563' id='13' mode='checkdropdown' name='Purple Cap Contenders' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:bowler:nk]' type-v2='filter' w='6825' x='92700' y='52903'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='46110' id='12' is-fixed='true' name='Purple Cap Contenders' w='46113' x='46587' y='6736'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='8478' id='14' name='Purple Cap Contenders' pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[cnt:player_dismissed:qk]' type-v2='color' w='6825' x='92700' y='65466'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='12564' id='18' mode='checkdropdown' name='Most Sixes' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]' type-v2='filter' w='6825' x='92700' y='86507'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='46225' id='17' is-fixed='true' name='Most Sixes' w='46113' x='46587' y='52846'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='46169' id='15' is-fixed='true' name='Most Fours' w='46112' x='475' y='52902'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='12563' id='16' name='Most Fours' pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' type-v2='color' w='6825' x='92700' y='73944'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{D26EC4A6-7CD1-4BA4-BBB0-15C7DBC50402}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='Team Statistics'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Æ                                                          </run>
+            <run bold='true' underline='true'> Team   Statistics</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style>
+        <style-rule element='dash-title'>
+          <format attr='background-color' value='#c0c0c0' />
+        </style-rule>
+      </style>
+      <size sizing-mode='automatic' />
+      <datasources>
+        <datasource name='Parameters' />
+        <datasource caption='matches+' name='federated.1q5c7mc0jsu63w19s8ltn10ehxhv' />
+      </datasources>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Teams' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' source-field='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[batting_team]' type='nominal' value='&quot;Royal Challengers Bangalore&quot;'>
+          <calculation class='tableau' formula='&quot;Royal Challengers Bangalore&quot;' />
+        </column>
+      </datasource-dependencies>
+      <datasource-dependencies datasource='federated.1q5c7mc0jsu63w19s8ltn10ehxhv'>
+        <column caption='Home vs Away' datatype='string' name='[Calculation_808396143702441999]' role='dimension' type='nominal'>
+          <calculation class='tableau' formula='IF  [home_team]=&quot;team1&quot; and [Parameters].[Parameter 1]=[team1] THEN &quot;Home&quot;&#13;&#10;else if [home_team]=&quot;team1&quot; and [Parameters].[Parameter 1]=[team2] THEN &quot;Away&quot;&#13;&#10;else if [home_team]=&quot;NA&quot; THEN &quot;NA&quot;&#13;&#10;else if [home_team]=&quot;team2&quot; and [Parameters].[Parameter 1]=[team1] THEN &quot;Away&quot;&#13;&#10;else if [home_team]=&quot;team2&quot; and [Parameters].[Parameter 1]=[team2] THEN &quot;Home&quot;&#13;&#10;END END END END END' />
+        </column>
+        <column caption='All Seasons Stats' datatype='string' name='[Calculation_808396143734910992]' role='dimension' type='nominal'>
+          <calculation class='tableau' formula='STR([season])' />
+        </column>
+        <column-instance column='[Calculation_808396143702441999]' derivation='None' name='[none:Calculation_808396143702441999:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Calculation_808396143734910992]' derivation='None' name='[none:Calculation_808396143734910992:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98014' id='5' param='vert' type-v2='layout-flow' w='99002' x='499' y='993'>
+            <zone h='7196' id='7' type-v2='title' w='99002' x='499' y='993'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='90818' id='6' type-v2='layout-basic' w='99002' x='499' y='8189' />
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='36818' id='8' name='Win % Home vs Away' w='60237' x='2315' y='58072' />
+        <zone h='23113' id='9' name='Win % Home vs Away' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143702441999:nk]' type-v2='filter' w='16024' x='64273' y='68641' />
+        <zone h='6039' id='10' mode='compact' param='[Parameters].[Parameter 1]' type-v2='paramctrl' w='16024' x='81899' y='70267' />
+        <zone h='47967' id='11' name='Season wise Team Performance' w='61009' x='1128' y='10221' />
+        <zone h='38676' id='12' name='Season wise Team Performance' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143734910992:nk]' type-v2='filter' w='16024' x='81662' y='16376' />
+        <zone h='39141' id='13' name='Season wise Team Performance' pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:winner:nk]' type-v2='color' w='16558' x='63620' y='19744' />
+      </zones>
+      <devicelayouts>
+        <devicelayout name='Desktop'>
+          <size maxheight='900' minheight='900' sizing-mode='vscroll' />
+        </devicelayout>
+        <devicelayout auto-generated='true' name='Phone'>
+          <layout-options>
+            <title>
+              <formatted-text>
+                <run>Æ                                                          </run>
+                <run bold='true' underline='true'> Team   Statistics</run>
+              </formatted-text>
+            </title>
+          </layout-options>
+          <size maxheight='900' minheight='900' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='23' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98142' id='22' param='vert' type-v2='layout-flow' w='99050' x='475' y='929'>
+                <zone h='5807' id='7' type-v2='title' w='99050' x='475' y='929'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='38676' id='12' mode='checkdropdown' name='Season wise Team Performance' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143734910992:nk]' type-v2='filter' w='16024' x='81662' y='16376'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='47967' id='11' is-fixed='true' name='Season wise Team Performance' w='61009' x='1128' y='10221'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='39141' id='13' name='Season wise Team Performance' pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:winner:nk]' type-v2='color' w='16558' x='63620' y='19744'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='23113' id='9' mode='checkdropdown' name='Win % Home vs Away' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143702441999:nk]' type-v2='filter' w='16024' x='64273' y='68641'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='36818' id='8' is-fixed='true' name='Win % Home vs Away' w='60237' x='2315' y='58072'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='6039' id='10' mode='compact' param='[Parameters].[Parameter 1]' type-v2='paramctrl' w='16024' x='81899' y='70267'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{12286BFC-32ED-4612-AA43-54E0176575E2}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='44'>
+    <window class='worksheet' name='Toss Selection vs Outcome by Ground'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:toss_decision:nk]' type='shape' />
+            <card pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:toss_decision:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{51159601-F6A1-4C83-9075-F2992BB7426F}' />
+    </window>
+    <window class='worksheet' name='Biggest Wins By Runs(TOP 10)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:winner:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{B57D44C0-01BF-45B9-84CB-A5EC800C3E3B}' />
+    </window>
+    <window class='worksheet' name='Wins By Wickets Distribution'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{C1BFDA73-148F-44D6-8CB9-D74412B90E36}' />
+    </window>
+    <window class='worksheet' name='Highest Totals'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143622586372:nk]' type='filter' />
+            <card param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:season (copy)_808396143625412613:ok]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{3B80E2C8-18DE-4BCB-98F3-8E7F879F302F}' />
+    </window>
+    <window class='worksheet' name='Orange Cap Contenders'>
+      <cards>
+        <edge name='left'>
+          <strip size='182'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[yr:date:ok]' type='filter' />
+            <card param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' type='filter' />
+            <card param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[sum:batsman_runs:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{2F8288F3-4BFF-48DF-8F59-2C18D0555FDF}' />
+    </window>
+    <window class='worksheet' name='Purple Cap Contenders'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:bowler:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[cnt:player_dismissed:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{AC71C736-A932-46E5-945F-54D67C0E3815}' />
+    </window>
+    <window class='worksheet' name='Most Fours'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{B228F15A-8D83-425B-B0E6-C7B85B74C836}' />
+    </window>
+    <window class='worksheet' name='Most Sixes'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batting_team:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:batsman:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{992F9FC2-4127-42F6-8FCF-715601A9E857}' />
+    </window>
+    <window class='worksheet' name='Win % Home vs Away'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143702441999:nk]' type='filter' />
+            <card mode='compact' param='[Parameters].[Parameter 1]' type='parameter' />
+            <card pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[usr:Calculation_808396143698698253:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{7DD0D027-2E7B-450E-A388-58A4BB179F5B}' />
+    </window>
+    <window class='worksheet' name='Season wise Team Performance'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:Calculation_808396143734910992:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.1q5c7mc0jsu63w19s8ltn10ehxhv].[none:winner:nk]' type='color' />
+            <card mode='compact' param='[Parameters].[Parameter 1]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='fit-width' />
+      </viewpoint>
+      <simple-id uuid='{3476E191-7F29-4181-905C-BF3DCED13707}' />
+    </window>
+    <window class='dashboard' name='Match Statistics'>
+      <viewpoints>
+        <viewpoint name='Biggest Wins By Runs(TOP 10)' />
+        <viewpoint name='Highest Totals' />
+        <viewpoint name='Toss Selection vs Outcome by Ground'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='Wins By Wickets Distribution'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='3' />
+      <simple-id uuid='{F9F1B107-8875-4A30-B832-29429B48599E}' />
+    </window>
+    <window class='dashboard' name='Player Statistics'>
+      <viewpoints>
+        <viewpoint name='Most Fours'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Most Sixes'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Orange Cap Contenders' />
+        <viewpoint name='Purple Cap Contenders' />
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{82A1C3AB-3274-4C36-81CC-27D98855C5F8}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Team Statistics'>
+      <viewpoints>
+        <viewpoint name='Season wise Team Performance'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Win % Home vs Away' />
+      </viewpoints>
+      <active id='6' />
+      <simple-id uuid='{27FADCCD-7EB9-44F5-97EB-65437D6BB49A}' />
+    </window>
+  </windows>
+</workbook>
